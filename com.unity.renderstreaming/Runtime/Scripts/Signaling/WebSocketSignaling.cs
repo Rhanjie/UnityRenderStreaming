@@ -203,9 +203,6 @@ namespace Unity.RenderStreaming.Signaling
                     {
                         msg = JsonUtility.FromJson<SignalingMessage>(content);
 
-						string timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                        Debug.LogError($"OnDestroyConnection called: {timestamp}");
-
                         //m_mainThreadContext.Post(d => OnDestroyConnection?.Invoke(this, msg.connectionId), null);
                     }
                     else if (routedMessage.type == "offer")
