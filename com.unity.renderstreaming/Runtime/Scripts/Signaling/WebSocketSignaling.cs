@@ -176,7 +176,11 @@ namespace Unity.RenderStreaming.Signaling
         private void WSProcessMessage(object sender, MessageEventArgs e)
         {
             var content = Encoding.UTF8.GetString(e.RawData);
-            Debug.Log($"Signaling: Receiving message: {content}");
+			
+			if (!Application.isEditor)
+            {
+				Debug.Log($"Signaling: Receiving message: {content}");
+			}
 
             try
             {
@@ -276,13 +280,21 @@ namespace Unity.RenderStreaming.Signaling
 
             if (data is string s)
             {
-                Debug.Log("Signaling: Sending WS data: " + s);
+                if (!Application.isEditor)
+                {
+                    Debug.Log("Signaling: Sending WS data: " + s);
+                }
+				
                 m_webSocket.Send(s);
             }
             else
             {
                 string str = JsonUtility.ToJson(data);
-                Debug.Log("Signaling: Sending WS data: " + str);
+                if (!Application.isEditor)
+                {
+                    Debug.Log("Signaling: Sending WS data: " + str);
+                }
+				
                 m_webSocket.Send(str);
             }
         }
