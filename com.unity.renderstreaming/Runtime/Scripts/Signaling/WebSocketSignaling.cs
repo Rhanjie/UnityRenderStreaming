@@ -177,7 +177,7 @@ namespace Unity.RenderStreaming.Signaling
         {
             var content = Encoding.UTF8.GetString(e.RawData);
 			
-			if (!Application.isEditor)
+			if (Application.isEditor)
             {
 				Debug.Log($"Signaling: Receiving message: {content}");
 			}
@@ -280,7 +280,7 @@ namespace Unity.RenderStreaming.Signaling
 
             if (data is string s)
             {
-                if (!Application.isEditor)
+                if (Application.isEditor)
                 {
                     Debug.Log("Signaling: Sending WS data: " + s);
                 }
@@ -290,7 +290,7 @@ namespace Unity.RenderStreaming.Signaling
             else
             {
                 string str = JsonUtility.ToJson(data);
-                if (!Application.isEditor)
+                if (Application.isEditor)
                 {
                     Debug.Log("Signaling: Sending WS data: " + str);
                 }
