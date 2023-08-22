@@ -5,7 +5,7 @@
   "unity": "2023.2",
   "description": "This is a package for using Unity Render Streaming technology. It contains two samples to use the technology.",
   "dependencies": {
-    "com.unity.webrtc": "M107",
+    "com.unity.webrtc": "3.0.0-pre.6",
     "com.unity.inputsystem": "1.4.1"
   },
   "samples": [
